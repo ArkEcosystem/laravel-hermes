@@ -18,15 +18,15 @@
 
                         <div class="flex flex-col justify-between md:space-x-3 md:flex-row">
                             <span class="notification-truncate">
-                                {{ $notification->data['content'] }}
+                                {{ $notification->content() }}
                             </span>
 
                             <div class="flex flex-row space-x-4">
-                                @isset($notification->data['action'])
+                                @if($notification->hasAction())
                                     <span class="mt-1 font-semibold whitespace-nowrap link md:mt-0">
-                                        <a href="{{ $notification->data['action']['url'] }}">{{ $notification->data['action']['title'] }}</a>
+                                        <a href="{{ $notification->link() }}">{{ $notification->title() }}</a>
                                     </span>
-                                @endisset
+                                @endif
 
                                 <span class="block mt-1 text-sm md:hidden text-theme-secondary-400">
                                     {{ $notification->created_at_local->diffForHumans() }}

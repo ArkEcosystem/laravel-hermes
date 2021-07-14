@@ -138,10 +138,10 @@
                                     </div>
                                     <div class="leading-5 text-theme-secondary-600">
                                         <div class="flex flex-col sm:block">
-                                            <span>{{ $notification->data['content'] }}</span>
-                                            @isset($notification->data['action'])
-                                                <a href="{{ $notification->data['action']['url'] }}" class="font-semibold link">{{ $notification->data['action']['title'] }}</a>
-                                            @endisset
+                                            <span>{{ $notification->content() }}</span>
+                                            @if($notification->hasAction())
+                                                <a href="{{ $notification->link() }}" class="font-semibold link">{{ $notification->title() }}</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
